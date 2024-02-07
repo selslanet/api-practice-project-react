@@ -1,8 +1,10 @@
-
-
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import GetAll from "./components/GetAll";
+import GetById from "./components/GetById";
+import Create from "./components/Create";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -47,7 +49,7 @@ function App() {
   const renderLoginForm = () => {
     return (
       <div className="container py-5">
-      <h1>Login page</h1>
+        <h1>Login page</h1>
         <label>
           Username:
           <input
@@ -82,9 +84,34 @@ function App() {
   };
 
   return (
-    <div>
-      {loggedIn ? renderLogoutButton() : renderLoginForm()}
-    </div>
+   
+    <Router>
+      <div>
+        <nav>
+          <ul>
+          <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/create">Create</Link>
+            </li>
+            <li>
+              <Link to="/getid">GetID</Link>
+            </li>
+            <li>
+              <Link to="/getbyid">GetByID</Link>
+            </li>
+          </ul>
+        </nav>
+       
+        <Routes>
+        <Route path="/" element={loggedIn ? renderLogoutButton() : renderLoginForm()} />
+          <Route path="/create" element={<Create/>} />
+          <Route path="/getall" element={<GetAll/>} />
+          <Route path="/getbyid" element={<GetById/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
