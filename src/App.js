@@ -60,7 +60,8 @@ function App() {
             placeholder="Enter Email"
           />
         </label>
-        <br /><br/>
+        <br />
+        <br />
         <label>
           Password:
           <input
@@ -72,43 +73,49 @@ function App() {
           />
         </label>
         <br />
-        <button className="btn btn-primary" onClick={handleLogin}>Login</button>
+        <button className="btn btn-primary" onClick={handleLogin}>
+          Login
+        </button>
       </div>
     );
   };
 
   const renderLogoutButton = () => {
     return (
-      <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
-    )
+      <button className="btn btn-primary" onClick={handleLogout}>
+        Logout
+      </button>
+    );
   };
 
   return (
-   
     <Router>
       <div>
         <nav>
           <ul>
-          <li>
+            <li>
               <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/create">Create</Link>
             </li>
             <li>
-              <Link to="/getid">GetID</Link>
+              <Link to="/getAll">GetAll</Link>
             </li>
             <li>
-              <Link to="/getbyid">GetByID</Link>
+              <Link to="/getbyid/1">GetByID</Link>
             </li>
           </ul>
         </nav>
-       
+
         <Routes>
-        <Route path="/" element={loggedIn ? renderLogoutButton() : renderLoginForm()} />
-          <Route path="/create" element={<Create/>} />
-          <Route path="/getall" element={<GetAll/>} />
-          <Route path="/getbyid" element={<GetById/>} />
+          <Route
+            path="/"
+            element={loggedIn ? renderLogoutButton() : renderLoginForm()}
+          />
+          <Route path="/create" element={<Create />} />
+          <Route path="/getall" element={<GetAll />} />
+          <Route path="/getbyid/:id" element={<GetById />} />
         </Routes>
       </div>
     </Router>
@@ -116,4 +123,3 @@ function App() {
 }
 
 export default App;
-
