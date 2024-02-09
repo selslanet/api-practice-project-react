@@ -62,3 +62,67 @@ const GetAll = () => {
 };
 
 export default GetAll;
+
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
+// import { Link } from "react-router-dom";
+
+
+// const GetAll = () => {
+//   const [staffData, setStaffData] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await axios.get(
+//           "https://jsonplaceholder.typicode.com/users");
+//         setStaffData(response.data);
+//         console.log(response.data);
+//         setLoading(false);
+//       } catch (error) {
+//         console.error("Error fetching staff data:", error);
+//         setError("Error fetching data. Please try again later.");
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   if (loading) {
+//     return <div>Loading...</div>;
+//   }
+
+//   if (error) {
+//     return <div>{error}</div>;
+//   }
+
+//   return (
+//     <div>
+//       <h1>GetAll page</h1>
+//       <div>
+//         {staffData.map((staff, index) => (
+//           <div key={index}>
+//             <h3>
+//             <h1>{staff.id} </h1>
+//              <Link to={`/getbyid/${staff.id}`}>click me</Link><br/>
+//               {staff.username} 
+             
+//             </h3>
+           
+//             <p>Name: {staff.name}</p>
+//             <p>Email: {staff.email}</p>
+          
+//             <p>phone: {staff.phone}</p> 
+           
+//             <hr />
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default GetAll;
